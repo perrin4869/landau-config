@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# https://github.com/Aquantia/AQtion/issues/62
+case "$1" in
+  pre)
+    # Before suspend
+    /sbin/rmmod atlantic
+    ;;
+  post)
+    # After resume
+    /sbin/modprobe atlantic
+    ;;
+esac

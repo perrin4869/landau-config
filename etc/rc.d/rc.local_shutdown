@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ -x /etc/rc.d/rc.docker ]; then
+  # Stop Docker daemon:
+  echo "Stopping Docker daemon:    /etc/rc.d/rc.docker stop"
+  /etc/rc.d/rc.docker stop
+fi
+
+if [ -x /etc/rc.d/rc.libvirt ]; then
+  # Stop libvirt daemon:
+  echo "Stopping libvirt daemon:    /etc/rc.d/rc.libvirt stop"
+  /etc/rc.d/rc.libvirt stop
+fi
+
+if [ -x /etc/rc.d/rc.rasdaemon ]; then
+  # Stop rasdaemon daemon:
+  echo "Stopping rasdaemon daemon:    /etc/rc.d/rc.rasdaemon stop"
+  /etc/rc.d/rc.rasdaemon stop
+fi
+
+if [ -x /etc/rc.d/rc.binfmt-support ]; then
+  /etc/rc.d/rc.binfmt-support stop
+fi

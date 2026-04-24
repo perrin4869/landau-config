@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# /etc/rc.d/rc.local:  Local system initialization script.
+#
+# Put any local startup commands in here.  Also, if you have
+# anything that needs to be run at shutdown time you can
+# make an /etc/rc.d/rc.local_shutdown script and put those
+# commands in there.
+
+
+if [ -x /etc/rc.d/rc.docker ]; then
+  # Start Docker daemon:
+  echo "Starting Docker daemon:    /etc/rc.d/rc.docker start"
+  /etc/rc.d/rc.docker start
+fi
+
+if [ -x /etc/rc.d/rc.libvirt ]; then
+  # Start libvirt daemon:
+  echo "Starting libvirt daemon:    /etc/rc.d/rc.libvirt start"
+  /etc/rc.d/rc.libvirt start
+fi
+
+if [ -x /etc/rc.d/rc.rasdaemon ]; then
+  # Start rasdaemon daemon:
+  echo "Starting rasdaemon daemon:    /etc/rc.d/rc.rasdaemon start"
+  /etc/rc.d/rc.rasdaemon start
+fi
+
+if [ -x /etc/rc.d/rc.binfmt-support ]; then
+  /etc/rc.d/rc.binfmt-support start
+fi

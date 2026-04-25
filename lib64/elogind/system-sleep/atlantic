@@ -1,12 +1,16 @@
 #!/bin/sh
 
+logger -t atlantic-sleep "calling system sleep"
+
 # https://github.com/Aquantia/AQtion/issues/62
 case "$1" in
   pre)
     # Before suspend
-    /sbin/rmmod atlantic
+    logger -t atlantic-sleep "removing"
+    /sbin/modprobe -r atlantic
     ;;
   post)
+    logger -t atlantic-sleep "adding"
     # After resume
     /sbin/modprobe atlantic
     ;;
